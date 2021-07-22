@@ -40,7 +40,7 @@ export default {
 		if (!name) {
 			return res.status(400).send({ error: 'Attribute name missing' });
 		}
-		const user = await User.findByPk(user_id).update({ name: name });
+		const user = await (await User.findByPk(user_id)).update({ name: name });
 		return res.status(200).send({ id: user.id, name: user.name });
 	},
 
