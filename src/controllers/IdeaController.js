@@ -21,6 +21,14 @@ export default {
 		return res.json(ideas);
 	},
 
+	async get_ids(req, res) {
+		const ideas = await Idea.findAll({
+			attributes: ['id'],
+			limit: 100,
+		});
+		return res.json(ideas);
+	},
+
 	async total_count(req, res) {
 		const count = Math.ceil((await Idea.count()) / amount);
 		console.log(count);

@@ -11,6 +11,7 @@ const routes = express.Router();
 
 routes.get('/idea/:id', IdeaController.findOne);
 routes.get('/idea/', IdeaController.index);
+routes.get('/ideas_ids', IdeaController.get_ids);
 routes.get('/idea/page/:page', IdeaController.index);
 routes.post('/idea', auth, IdeaController.add);
 routes.get('/ideas_total_count', IdeaController.total_count);
