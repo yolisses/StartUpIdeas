@@ -48,6 +48,7 @@ export default {
 		const { token } = req.body;
 		verify(token).then(async (payload) => {
 			const email = payload.email;
+			const name = payload.name;
 			console.log(email);
 
 			const foundUser = await User.findOne({ where: { email } });
@@ -61,7 +62,7 @@ export default {
 			} else {
 				console.log('ainda não possui uma conta');
 				try {
-					const user = await User.create({ email: email, name: 'eu' });
+					const user = await User.create({ email: email, name });
 					res.send({
 						name: user.name,
 						id: user.id,
