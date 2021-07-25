@@ -5,6 +5,22 @@ import { Sequelize } from 'sequelize';
 const amount = 10;
 
 export default {
+	// async index(req, res) {
+	// 	const { page } = req.params;
+	// 	const ideas = await Idea.findAll({
+	// 		attributes: [
+	// 			'id',
+	// 			[Sequelize.literal(`SUBSTRING("title", 1, 100)`), 'title'],
+	// 			[Sequelize.literal(`SUBSTRING("description", 1, 100)`), 'description'],
+	// 			'updated_at',
+	// 		],
+	// 		limit: amount,
+	// 		offset: amount * (page || 0),
+	// 		order: [['id', 'ASC']],
+	// 	});
+	// 	return res.json(ideas);
+	// },
+
 	async index(req, res) {
 		const { page } = req.params;
 		const ideas = await Idea.findAll({
@@ -16,7 +32,7 @@ export default {
 			],
 			limit: amount,
 			offset: amount * (page || 0),
-			order: [['id', 'ASC']],
+			order: [['id', 'DESC']],
 		});
 		return res.json(ideas);
 	},
