@@ -46,8 +46,7 @@ export default {
 	},
 
 	async total_count(req, res) {
-		const count = Math.ceil((await Idea.count()) / amount);
-		console.log(count);
+		const count = await Idea.count();
 		return res.json({ count });
 	},
 
